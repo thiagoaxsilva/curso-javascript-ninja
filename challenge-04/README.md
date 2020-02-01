@@ -111,15 +111,36 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 citado acima, no lugar de "pessoas".
 */
 carro.adicionarPessoas = function (pessoas) {
-    var qtd  = carro.quantidadePessoas - carro.assentos == 1 ? 'pessoa' : 'pessoas';
+    var difAssentos = carro.quantidadePessoas - carro.assentos;
+    var qtd  = difAssentos == 1 ? 'pessoa' : 'pessoas';
+    var totalPessoas = carro.quantidadePessoas + pessoas;
+    if (carro.quantidadePessoas === carro.assentos && totalPessoas >= carro.assentos ) {
+        return 'O carro já está lotado!';
+    }
+    else if (totalPessoas <= carro.assentos) {
+        carro.quantidadePessoas += pessoas;
 
-    if ((carro.quantidadePessoa + pessoas) <= carro.assentos) {
-        return carro.quantidadePessoas += pessoas;
     } else {
-        "Só cabem mais" + " " + carro.quantidadePessoas - carro.assentos + " " + qtd + "!"
+        return "Só cabem mais" + " " + (carro.assentos - carro.quantidadePessoas) + " " + qtd + "!"
     }
 
-    return 'Já temos' + ' ' + carro.quantidadePessoas + ' ' + qtd + ' no carro!' + carro.quantidadePessoa + pessoas;
+    return 'Já temos' + ' ' + carro.quantidadePessoas + ' ' + 'pessoas no carro!';
+}
+
+carro.adicionarPessoas = function ( numeroPessoas ) {
+    var totalPessoas = carro.quantidadePessoas + pessoas;
+    if( carro.quantidadePessoas === carro.assentos ){
+        return 'O carro já está lotado!';
+    }
+
+    if(totalPessoa > carro.assentos) {
+        var quantasPessoasCabem = carro.assentos - carro.quantidadePessoas;
+        var pluralOuSingular = quantasPessoasCabem === 1 ? 'pessoa' : 'pessoas';
+        return "So cabem mais " + quantasPessoasCabem + " " + pluralOuSingular + "!";
+    }
+
+    carro.quantidadePessoa += pessoas;
+    return 'Já temos ' + carro.quantidadePessoas + 'pessoas no carro!';
 }
 
 /*
@@ -130,38 +151,38 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-?
+carro.obterCor(); // 'branco'
 
 // Mude a cor do carro para vermelho.
-?
+carro.mudaCor('vermelho');
 
 // E agora, qual a cor do carro?
-?
+carro.obterCor(); // 'vermelho'
 
 // Mude a cor do carro para verde musgo.
-?
+carro.mudaCor('verde musgo');
 
 // E agora, qual a cor do carro?
-?
+carro.obterCor(); // 'verde musgo'
 
 // Qual a marca e modelo do carro?
-?
+carro.obterMarcaModelo();
 
 // Adicione 2 pessoas no carro.
-?
+carro.adicionarPessoas(2);
 
 // Adicione mais 4 pessoas no carro.
-?
+carro.adicionarPessoas(4);
 
 // Faça o carro encher.
-?
+carro.adicionarPessoas(3);
 
 // Tire 4 pessoas do carro.
-?
+carro.adicionarPessoas(-4);
 
 // Adicione 10 pessoas no carro.
-?
+carro.adicionarPessoas(10);
 
 // Quantas pessoas temos no carro?
-?
+1
 ```
