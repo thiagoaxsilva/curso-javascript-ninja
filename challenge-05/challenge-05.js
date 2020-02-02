@@ -14,7 +14,7 @@ function retornaArray (ar) {
 /*
 Imprima o segundo índice do array retornado pela função criada acima.
 */
-retornaArray(myVar)[2];
+retornaArray(myVar)[1];
 
 /*
 Crie uma função que receba dois parâmetros: o primeiro, um array de valores; e o
@@ -23,7 +23,7 @@ no primeiro parâmetro. O índice usado para retornar o valor, deve ser o númer
 segundo parâmetro.
 */
 function indiceArray (ary, indice) {
-    return ary[indice];
+    return ary[ indice ];
 }
 
 /*
@@ -52,34 +52,50 @@ propriedades:
 os livros.
 */
 function book ( nomeLivro ) {
-    var obj = {
-        var livro1 = 
+    var livros = {
+        'Do mil ao milhão': {
+            quantidadePaginas: 224,
+            autor: 'Thiago Nigro',
+            editora: 'Harper Collins' 
+        },
+        'Mais esperto que o diabo': {
+            quantidadePaginas: 208,
+            autor: 'Napoleon Hill',
+            editora: 'Citadel Editora' 
+        },
+        'Akira': {
+            quantidadePaginas: 440,
+            autor: 'Katsuhiro Otomo',
+            editora: 'JBC'
+        }
+    };
 
-    }
+    return !nomeLivro ? livros : livros[nomeLivro];
 }
 
 /*
 Usando a função criada acima, imprima o objeto com todos os livros.
 */
-// ?
+console. log ( book () );
 
 /*
 Ainda com a função acima, imprima a quantidade de páginas de um livro qualquer,
 usando a frase:
 "O livro [NOME_DO_LIVRO] tem [X] páginas!"
 */
-// ?
+var livroNome = 'Do mil ao milhao';
+console.log ('O livro ' + livroNome + ' ' + book( livroNome ).quantidadePaginas + ' páginas!');
 
 /*
 Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
 a frase:
 "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
 */
-// ?
+console.log ('O autor do livro Mais esperto que o diabo é ' + book('Mais esperto que o diabo').autor);
 
 /*
 Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
 a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
 */
-// ?
+console.log ('O livro Akira foi publicado pela editora ' + book('Akira').editora );
