@@ -99,3 +99,11 @@ a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
 */
 console.log ('O livro Akira foi publicado pela editora ' + book('Akira').editora );
+ var a,
+ b = 2,
+ c;
+
+ function myFunc() {
+     var x = 0;
+     return (x += 1, x);
+ }
