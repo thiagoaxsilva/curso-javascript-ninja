@@ -13,7 +13,7 @@
     var five = Number('5');
     console.log(five + ' é número?', typeof five === 'number');
 
-    var concat = String(10) + String(10);
+    var concat = String(10) + 10;
     console.log('"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string');
 
     /*
@@ -54,7 +54,7 @@
     - O desafio é fazer o retorno sem usar "if" ou "switch".
     */
     function isOperatorValid(operador) {
-        return typeof operation[operador] === 'function' ? true : false;
+        return !!operation[operador];
     }
 
     /*
@@ -75,7 +75,7 @@
                 if (typeof num1 !== 'number' || typeof num2 !== 'number') {
                     return false;
                 }
-                return operation[operador](num1, num2);
+                return operation[ operador ]( num1, num2 );
 
             }
         }
@@ -100,7 +100,7 @@
     'Operação "[OPERATOR]" não permitida!'
     */
     function showErrorMessage(operator) {
-        return 'Operação ' + operator + ' não permitida!';
+        return 'Operação "' + operator + '" não permitida!';
     }
 
     /*
@@ -136,7 +136,7 @@
     */
     number1 = 5;
     number2 = 3;
-    if (sum === false) {
+    if ( !sum ) {
         console.log(showErrorMessage(operationSignal));
     } else {
         console.log(showOperationMessage(operationSignal, number1, number2) + sum(number1, number2));
