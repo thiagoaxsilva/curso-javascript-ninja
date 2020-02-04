@@ -50,10 +50,7 @@
     */
 
     function moreThan (age) {
-        if ( person.age > age ) {
-            return true;
-        }
-        return false
+        return person.age > age;
     }
     console.log ('The person has more than 25 years old? ' + moreThan (25));
     /*
@@ -63,7 +60,10 @@
     */
     var numbers = [];
     console.log( 'De 0 a 10:' );
-    for (var counter = 0; counter < 10 ; counter++) {
+    for (var counter = 0; counter < 20 ; counter++) {
+        if ( counter > 10 ) {
+            break;
+        }
         numbers.push(counter);
     }
     console.log (numbers);
@@ -77,7 +77,7 @@
     console.log( 'Pares de 0 a 20:' );
     numbers = [];
     for (var counter = 0; counter < 20 ; counter++) {
-        if (counter % 2 !== 0) {
+        if (counter % 2 === 0) {
             continue;
         }
         numbers.push(counter);
