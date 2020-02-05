@@ -70,17 +70,19 @@
     /*
     Converta os livros novamente para objeto.
     */
-    // ?
-    console.log('\nAgora os livros são objetos novamente:');
+    string = JSON.parse(string);
+    console.log('\nAgora os livros são objetos novamente:', string);
 
     /*
     Mostre no console todas as propriedades e valores de todos os livros,
     no formato abaixo:
         "[PROPRIEDADE]: [VALOR]"
     */
-    for (var propriedade in books) {
-        console.log('[PROPRIEDADE]' + ': ' + '[VALOR]');
-    }
+        for (var i = 0; i < books.length; i++) {
+            for (var propriedade in books[i]) {
+                console.log (propriedade + ': ' + books[i][propriedade])
+            }
+        }
 
     /*
     Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
