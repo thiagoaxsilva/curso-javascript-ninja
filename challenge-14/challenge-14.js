@@ -22,6 +22,7 @@ console.log( '\nJust Numbers:' );
 var justNumbers = numberObjects.map(function(value) {
     return value.number;
 });
+console.log( justNumbers );
 
 /*
 Crie um novo array chamado `justMod2Or3`, que receberá do array criado acima
@@ -32,7 +33,7 @@ console.log( '\nJust module of division by 2 or 3:' );
 var justMod2Or3 = justNumbers.filter(function (value){
     return value % 2 === 0 || value % 3 === 0;
 });
-
+console.log (justMod2Or3);
 /*
 Declare uma variável chamada operation que receba, do array criado acima,
 um valor reduzido pela seguinte operação:
@@ -42,12 +43,8 @@ O cálculo deve começar com zero.
 Mostre o resultado no console.
 */
 console.log( '\nOperation:' );
-var operation = justMod2Or3.reduce(function(anterior, atual, index){
-    if (index === justMod2Or3.length - 1){
-        return (anterior * atual) + 1;
-    }
-    console.log (index);
-    return anterior * atual;
+var operation = justMod2Or3.reduce(function(anterior, atual) {
+    return (anterior + 1) * atual;
 }, 0);
 console.log(operation);
 /*
@@ -56,12 +53,8 @@ primeiro. O nome da variável deve ser operation2. Mostre o resultado no
 console.
 */
 console.log( '\nOperation 2:' );
-var operation2 = justMod2Or3.reduceRight(function(anterior, atual, index){
-    if (index === justMod2Or3.length - 1){
-        return (anterior * atual) + 1 ;
-    }
-    console.log (index);
-    return anterior * atual;
+var operation2 = justMod2Or3.reduceRight(function(anterior, atual){
+    return (anterior + 1) * atual;
 }, 0);
 console.log(operation2);
 /*
@@ -73,11 +66,11 @@ infantil, onde você coloca a letra "P" antes de cada sílaba de uma palavra
 falada, como se você estivesse falando em código xD
 */
 console.log( '\nSeu nome na língua do "P":' );
-var name = ['T', 'h', 'i', 'a', 'g', 'o']
+var name = ['Thi', 'a', 'go'];
 var linguaDoP = name.reduce(function(anterior, atual){
-    return anterior + 'p' + atual;
+    return anterior + 'P' + atual;
 },'');
-
+console.log (linguaDoP);
 /*
 Crie uma variável chamada `inversedName`, que reduzirá o array em uma string
 e atribuirá o seu nome invertido (usando o array criado acima).
@@ -86,7 +79,7 @@ console.log( '\nInversed Name:' );
 var inversedName = name.reduceRight(function(anterior, atual){
     return anterior + atual;
 });
-
+console.log(inversedName);
 /*
 Mostre no console o array `numberObjects`.
 */
@@ -107,7 +100,9 @@ var position;
 position = numberObjects.map(function(value) { 
     return value.number; 
 }).indexOf(2);
-position !== -1 ? 'Exite um objeto { number: 2 } em numberObjects!' : 'Não existe um objeto { number: 2 } em numberObjects!';
+position !== -1 
+        ? 'Exite um objeto { number: 2 } em numberObjects!'
+        : 'Não existe um objeto { number: 2 } em numberObjects!';
 
 /*
 Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
