@@ -94,11 +94,15 @@
     */
     console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
     var myName = 'Thiago';
-    console.log()
-    function maiMin (str, i) {
-        if (str % 2 === 0){
-            str[i];
+    var intercalate = '';
+    function maiMin (i) {
+        if (i % 2 === 0){
+            return intercalate += myName[i].toUpperCase();
         }
+        return intercalate += myName[i].toLowerCase();
     }
-
+    for(var i = 0; i < myName.length; i++) {
+        maiMin(i);
+    }
+    console.log(intercalate);
 })();
