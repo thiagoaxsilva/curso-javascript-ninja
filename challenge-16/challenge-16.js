@@ -17,7 +17,7 @@
     */
     console.log( 'As letras do seu nome:' );
     var name = 'Thiago';
-    for(indice = 0; indice < name.length; indice++){
+    for(var indice = 0; indice < name.length; indice++){
         console.log(name[indice] + ' é a ' + (indice + 1) + 'ª letra do meu nome.');
     };
     
@@ -35,10 +35,10 @@
     */
     console.log( '\nNome convertido à partir de um slug:' );
     var fullName = 'thiago-antonio-xavier-silva';
+    var newFullName = fullName.split('-');
     console.log(fullName);
-    fullName = fullName.split('-');
-    for (i = 0; i < fullName.length ; i++){
-        fullName[i] = fullName[i].charAt(0).toUpperCase() + fullName[i].slice(1);
+    for ( var i = 0; i < fullName.length ; i++){
+        newFullName[i] = newFullName[i].charAt(0).toUpperCase() + newFullName[i].slice(1);
     }
     fullName = fullName.join(' ');
     console.log (fullName);
@@ -56,6 +56,7 @@
     */
     console.log( '\nMeus amigos:' );
     var array = ['Thiago', 'João', 'Maria', 'José', 'Pedro', 'Tomé', 'Roberto'];
+    console.log ( friends );
     while(array.length > 2){
         
         array[0] = array[0].concat(', '+ array[1]);
@@ -63,9 +64,13 @@
 
     };
     array[0] = array[0].concat(' e ' + array[1] + ' são meus amigos.');
-    
-    
-
+    console.log('Meus amigos:');
+    var friends = [ 'Paulo', 'Marcos', 'Maria', 'Sandro', 'Felipe' ];
+    var phrase = friends.reduce(function(acumulado, atual, index) {
+        var separator = friends.length - 1 === index ? ' e ' : ', ';
+        return acumulado + separator + atual;
+    }).concat( ' são meus amigos.' );
+    console.log( phrase );
 
     /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
