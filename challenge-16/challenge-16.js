@@ -78,6 +78,7 @@
     xxx*/
     console.log( '\nEra "Roberto", agora é:' );
     var string = 'Roberto';
+    console.log(string.replace('to', 'ta'));
 
 
     /*
