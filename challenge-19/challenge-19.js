@@ -58,7 +58,7 @@
     */
     var otherText = 'Silvio Santos, nome artístico de Senor Abravanel (Rio de Janeiro, 12\n de dezembro de 1930), é um apresentador de televisão e empresário brasileiro.\n Proprietário do Grupo Silvio Santos, que inclui empresas como a Liderança\n Capitalização (administradora da loteria Tele Sena), a Jequiti Cosméticos e o\n Sistema Brasileiro de Televisão (mais conhecido como SBT), Silvio Santos possui\n um patrimônio avaliado em aproximadamente 6\n bilhões de reais.';
     console.log('\nNúmeros no final da linha:\n\n', otherText, '\n');
-    otherText.match(numbersAtTheEnd);
+    console.log (otherText.match(numbersAtTheEnd));
 
     /*
     Vamos criar um método que vai testar se uma classe CSS existe em uma
@@ -85,5 +85,18 @@
     */
     var markup = '<main>\n  <div class="container">\n    <span class="text date"></span>\n    <p class=\'excerpt\'></p>\n  </div>\n</main>';
     console.log('\nQuais classes CSS existem na marcação abaixo?\n\n', markup, '\n');
-    // ?
+    var regex = /class=\W?\W(.+?)[\\'"]/g
+    function hasClass(markup, cssClass) {
+      var result = regex.exec( markup );
+      while (!!result) {
+        if (result[1] === cssClass) {
+          return console.log((!!result) + ' para a classe ' + cssClass);
+        }
+        result = regex.exec( markup );
+      }
+      return console.log(!!result);
+    }
+    console.log( hasClass(markup, 'container') );
+    console.log( hasClass(markup, 'text date') );
+    console.log( hasClass(markup, 'excerpt') );
 })();
