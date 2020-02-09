@@ -88,6 +88,14 @@
     var regex = /class=\W?\W(.+?)[\\'"]/g
     function hasClass(markup, cssClass) {
       var result = regex.exec( markup );
+      if (hasClass(markup, cssClass) !== null) {
+          
+        }
+      return console.log((!!result) + ' para a classe ' + cssClass);
+    }
+    /*
+    function hasClass(markup, cssClass) {
+      var result = regex.exec( markup );
       while (!!result) {
         if (result[1] === cssClass) {
           return console.log((!!result) + ' para a classe ' + cssClass);
@@ -96,6 +104,7 @@
       }
       return console.log(!!result);
     }
+    */
     console.log( hasClass(markup, 'container') );
     console.log( hasClass(markup, 'text date') );
     console.log( hasClass(markup, 'excerpt') );
