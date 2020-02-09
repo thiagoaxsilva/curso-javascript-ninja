@@ -26,7 +26,7 @@
     no console:
     */
     console.log('Regex para números usando o construtor:');
-    var justNumbersRegex = new RegExp('^\\d{2}', 'gm');
+    var justNumbersRegex = new RegExp('^\\d+', 'gm');
     console.log(justNumbersRegex);
     /*
     Verifique se a regex acima casa com o texto na variável `text`, mostrando o
@@ -85,13 +85,10 @@
     */
     var markup = '<main>\n  <div class="container">\n    <span class="text date"></span>\n    <p class=\'excerpt\'></p>\n  </div>\n</main>';
     console.log('\nQuais classes CSS existem na marcação abaixo?\n\n', markup, '\n');
-    var regex = /class=\W?\W(.+?)[\\'"]/g
+    //var regex = /class=\W?\W(.+?)[\\'"]/g
     function hasClass(markup, cssClass) {
-      var result = regex.exec( markup );
-      if (hasClass(markup, cssClass) !== null) {
-          
-        }
-      return console.log((!!result) + ' para a classe ' + cssClass);
+        var regex = new RegExp( 'class=["\'](?:[\\w\\s]+)?' + cssClass + '(?:[\\w\\s]+)?["\']' );
+        return regex.test ( markup );
     }
     /*
     function hasClass(markup, cssClass) {
@@ -105,7 +102,11 @@
       return console.log(!!result);
     }
     */
-    console.log( hasClass(markup, 'container') );
-    console.log( hasClass(markup, 'text date') );
-    console.log( hasClass(markup, 'excerpt') );
+   
+   var classes = ['container', 'text', 'date', 'excerpt', 'main'];
+   classes.forEach(function(cssClass) {
+
+       console.log( hasClass( markup, cssClass ) + ' para a classe ' + cssClass);
+
+   });
 })();
