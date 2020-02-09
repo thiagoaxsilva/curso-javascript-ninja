@@ -16,49 +16,47 @@
     nome, `username` deve receber "Desconhecido".
     Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
     */
-    var username = prompt( 'Qual é seu nome?' );
-    if ( !username )
-        username = 'Desconhecido';
+    var username = prompt( 'Qual é seu nome?' ) || 'Desconhecido';
     alert( 'Bem vindo ' + username );
-    
+
     /*
     Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
     uma variável chamada `email`.
     */
     var email = prompt('Qual seu e-mail?');
-    console.log(email);
 
     /*
     - Selecione o input de "Nome", atribuindo-o à uma variável chamada
     `$inputUsername`.
     */
-    var $inputUsername = doc.querySelector( '[type="text"]' );
-    console.log ($inputUsername);
+    var $inputUsername = doc.querySelector( 'input[type="text"]' );
+
     /*
     - Selecione o input de "Email", atribuindo-o à uma variável chamada
     `$inputEmail`.
     */
-    var $inputEmail = doc.querySelector( '[type="email"]' );
+    var $inputEmail = doc.querySelector( 'input[type="email"]' );
     console.log ($inputEmail);
     console.log ($inputEmail.value);
     /*
     - Selecione o campo de "Mensagem", atribuindo-o à uma variável chamada
     `$message`.
     */
-    var $message = doc.getElementsByTagName( 'textarea' )[0];
+    var $message = doc.querySelector( 'textarea' );
 
     /*
     - Selecione o botão de envio do formulário, atribuindo-o à uma variável
     chamada `$button`.
     */
-    var $button = doc.getElementsByTagName( 'button' )[0];
-    console.log($button);
+    var $button = doc.querySelector( 'button' );
+
     /*
     Preencha os campos de "Nome" e "Email" que estão no documento com os valores
     entrados pelo usuário.
     */
     $inputUsername.value = username;
     $inputEmail.value = email;
+
     /*
     Adicione um listener de evento de click ao botão que faça o seguinte:
     1. Verificar se todos os campos estão preenchidos:
@@ -83,20 +81,19 @@
     Caso contrário, mostre um alerta com a mensagem:
         - "Não enviado."
     */
-    $button.addEventListener ('click', function () {
+    $button.addEventListener ('click', function (event) {
         event.preventDefault();
-        if ($inputUsername.value === '')
-            alert('Preencha o nome do usuário!');
-        else if ($inputEmail.value === '')
-            alert('Preencha o e-mail!');
-            if(isValidEmail($inputEmail.value) !== true)
-                alert('Entre com um e-mail válido!');
-        else if ($message.value === '')
-            alert('Preencha a mensagem!');
-        else if (confirm( 'Tem certeza que deseja enviar o formulário?' )){
-            alert('Enviado com sucesso!');
-        } else
-            alert('Não enviado.');
+        if ( !$inputUsername.value )
+            return alert('Preencha o nome do usuário!');
+        if ( !$inputEmail.value )
+            return alert('Preencha o e-mail!');
+        if( !isValidEmail($inputEmail.value) )
+            return alert('Entre com um e-mail válido!');
+        if ( !$message.value )
+            return alert('Preencha a mensagem!');
+        if ( confirm( 'Tem certeza que deseja enviar o formulário?' ) )
+            return alert('Enviado com sucesso!');
+        alert('Não enviado.');
     }, false);
 
     /*
@@ -125,8 +122,10 @@
         - "rita-marica@titica.a.b"
         - "agua_@evida.br.com"
     */
-   var regex = new RegExp('[\\w+\\.]+@\\w+\\.\\w{2,}(\\.\\w{1,2})?', 'g');
+   var regex = new RegExp('^[\\w+.]+@\\w+\\.\\w{2,}(\\.\\w{2})?$', 'g');
    function isValidEmail (email) {
+
        return regex.test(email);
+
    }
 })(window, document);
