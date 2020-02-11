@@ -1,4 +1,5 @@
 (function (win, doc) {
+  
   'use strict';
   /*
   Crie dois objetos, que serão duas pessoas. Cada um deve ter as propriedades
@@ -90,5 +91,6 @@
   números desse array e mostre o resultado no console.
   */
   console.log('\nSomar números entrados pelo usuário:');
-  sum.apply(this, numbers);
+  sum.apply( sum, numbers );
+
 })(window, document);
