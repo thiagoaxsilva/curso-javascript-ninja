@@ -16,23 +16,23 @@
         <ul>
             <li>
                 <label>Imagem do Carro:</label>
-                <input type="url" />
+                <input type="url" data-js="image"/>
             </li>
             <li>
                 <label>Marca / Modelo:</label>
-                <input type="text" />
+                <input type="text" data-js="brand-model"/>
             </li>
             <li>
                 <label>Ano:</label>
-                <input type="text" />
+                <input type="text" data-js="year"/>
             </li>
             <li>
                 <label>Placa:</label>
-                <input type="text" />
+                <input type="text" data-js="plate"/>
             </li>
             <li>
                 <label>Cor:</label>
-                <input type="text" />
+                <input type="text" data-js="color"/>
             </li>
             <li>
                 <button type="submit">Cadastrar</button>
@@ -49,7 +49,9 @@
                 <th>Cor</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody data-js="table-car">
+            
+        </tbody>
     </table>
     <script src="challenge-29.js"></script>
     <script src="dom.js"></script>

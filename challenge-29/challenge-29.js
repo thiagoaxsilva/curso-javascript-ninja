@@ -1,4 +1,4 @@
-(function(win, doc, DOM) {
+(function (win, doc, DOM) {
   'use strict';
 
   /*
@@ -35,26 +35,72 @@
   E aqui nesse arquivo, faça a lógica para cadastrar os carros, em um módulo
   que será nomeado de "app".
   */
- function app() {
+  function app() {
     return {
-      init: function() {
+      init: function () {
         this.companyInfo();
+        this.initEvents();
       },
 
-      companyInfo: function companyInfo () {
+      initEvents: function initEvents() {
+        (doc.querySelector('[data-js="form-register"')).addEventListener('submit', this.handleSubmit, false);
+      },
+
+      handleSubmit: function handleSubmit(e) {
+        e.preventDefault();
+        var $tableCar = doc.querySelector('[data-js="table-car"]');
+        $tableCar.appendChild(app().createNewCar());
+      },
+
+      createNewCar: function createNewCar() {
+        var $fragment = doc.createDocumentFragment();
+        var $tr = doc.createElement('tr');
+        var $input = doc.querySelectorAll('input');
+        var $image = doc.createElement('img');
+        $fragment.appendChild($tr);
+        Array.prototype.forEach.call($input, function (valor, index) {
+          var $td = doc.createElement('td');
+          if (index === 0) {
+            var a = doc.createAttribute("src");
+            a.value = valor.value;
+            $image.setAttributeNode(a);
+            console.log($image);
+            $tr.appendChild($image);
+          } else {
+            $td.textContent = valor.value;
+            $tr.appendChild($td);
+          }
+        });
+
+        return $fragment;
+      },
+
+      companyInfo: function companyInfo() {
         var ajax = new XMLHttpRequest();
         ajax.open('GET', './company.json', true);
         ajax.send();
-        ajax.addEventListener('onreadystatechange', this.getCompanyInfo, false);
+        ajax.addEventListener('readystatechange', this.getCompanyInfo, false);
+      },
+
+      isReady: function isReady() {
+        return this.readyState === 4 && this.status === 200;
       },
 
       getCompanyInfo: function getCompanyInfo() {
-        console.log(this);
-      }
+        if (!app().isReady.call(this))
+          return;
+
+        var data = JSON.parse(this.responseText);
+        var $companyName = doc.querySelector('[data-js="company-name"]');
+        var $companyPhone = doc.querySelector('[data-js="company-phone"]');
+        $companyName.textContent = data.name;
+        $companyPhone.textContent = data.phone;
+      },
+
     };
 
- }
- 
- app().init();
+  }
+
+  app().init();
 
 })(window, document, window.DOM);

@@ -1,5 +1,6 @@
 (function (win, doc) {
   'use strict';
+
   function DOM(str) {
     this.element = document.querySelectorAll(str);
   }
@@ -69,7 +70,7 @@
 
   function is(ar) {
     return Object.prototype.toString.call(ar);
-  }
+  };
 
   win.DOM = DOM;
 
