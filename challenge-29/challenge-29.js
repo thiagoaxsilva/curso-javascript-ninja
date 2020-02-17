@@ -1,4 +1,4 @@
-(function() {
+(function(win, doc, DOM) {
   'use strict';
 
   /*
@@ -35,5 +35,26 @@
   E aqui nesse arquivo, faça a lógica para cadastrar os carros, em um módulo
   que será nomeado de "app".
   */
+ function app() {
+    return {
+      init: function() {
+        this.companyInfo();
+      },
 
-})();
+      companyInfo: function companyInfo () {
+        var ajax = new XMLHttpRequest();
+        ajax.open('GET', './company.json', true);
+        ajax.send();
+        ajax.addEventListener('onreadystatechange', this.getCompanyInfo, false);
+      },
+
+      getCompanyInfo: function getCompanyInfo() {
+        console.log(this);
+      }
+    };
+
+ }
+ 
+ app().init();
+
+})(window, document, window.DOM);
